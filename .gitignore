@@ -1,0 +1,36 @@
+*.class
+
+#package
+*.war
+*.ear
+#*.jar 没有添加是可能会用到支付宝的jar需要提交到reprostory里面 。
+
+#kdiff3 ignore
+*.orig
+
+#maven
+target/
+
+#eclipse
+.settings/
+.project
+.classpath
+
+#idea
+.idea/
+/idea/
+*.ipr
+*.iml
+*.iws
+
+#temp file
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+
+#system ignore
+.DS_Store
+Thumbs.db
+
