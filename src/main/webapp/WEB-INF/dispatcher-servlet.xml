@@ -8,7 +8,12 @@
 	http://www.springframework.org/schema/mvc
 	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package="com.deyi" annotation-config="true"/>
+    <!--加这个exclude-filter 来防止在加在dispacher-servlet.xml的时候把service注入，那么在applicationContext.xml配置的aop发现这些service如果已经被注入
+    那么就不会对其进行操作，也会使aop失效-->
+    <context:component-scan base-package="com.deyi" annotation-config="true">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"></context:exclude-filter>
+    </context:component-scan>
+    <mvc:annotation-driven></mvc:annotation-driven>
 
     <mvc:annotation-driven>
         <mvc:message-converters>

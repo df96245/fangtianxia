@@ -26,6 +26,7 @@ public class AccountServiceImpl implements IAccountService {
 
     @Override
     public ServerResponse<Account> login(String userName, String passWord) {
+        System.out.println("正在登录....");
         int resultCount=accountMapper.checkUserName(userName);
         if (resultCount==0){
             return ServerResponse.createByErrorMessage("找不到用户名，请检查");
