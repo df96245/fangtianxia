@@ -74,11 +74,18 @@
             <version>2.3.23</version>
         </dependency>
 
-        <!--log4j-->
+        <!--logback-->
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.14</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.1.2</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.1.2</version>
+            <scope>compile</scope>
         </dependency>
         <!--commons-->
         <dependency>
