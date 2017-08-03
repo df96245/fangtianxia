@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+   http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    <aop:config>
+        <aop:aspect id="logAspectAop" ref="logAspect">
+            <aop:pointcut id="servicePointcut" expression="execution(* com.deyi.service.impl.AccountServiceImpl.*(..))"></aop:pointcut>
+            <!--执行顺序从上到下，after returning和after throwing用于正常和异常case的处理-->
+            <!--<aop:before method="before" pointcut-ref="servicePointcut" />-->
+            <aop:around method="around" pointcut-ref="servicePointcut"/>
+            <!--如果目标方法中有可能存在异常，异常确实发生了，这个时候，后置通知将不再执行-->
+            <aop:after-returning method="afterReturning" pointcut-ref="servicePointcut" arg-names="point,returnValue" returning="returnValue"/>
+            <!--<aop:after-throwing method="afterThrowing" pointcut-ref="servicePointcut"/>-->
+            <!--1.不能得到目标方法的返回值 2.无论目标方法是否有异常，最终通知都将执行 3.资源的关闭、连接的释放写在最终通知里-->
+            <aop:after method="finalMethod" pointcut-ref="servicePointcut"></aop:after>
+        </aop:aspect>
+    </aop:config>
+
+    <bean id="logAspect" class="com.deyi.aop.LogAspect"/>
+
+    <!--<bean id="accountService" class="com.deyi.service.impl.AccountServiceImpl"></bean>-->
+
+</beans>

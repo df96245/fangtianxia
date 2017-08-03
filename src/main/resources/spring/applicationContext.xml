@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+  <!--加这个exclude-filter 是因为在dispacher-servlet.xml中已经注入过一遍controller的bean的不需要再注入一次-->
+  <context:component-scan base-package="com.deyi" annotation-config="true">
+    <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"></context:exclude-filter>
+  </context:component-scan>
+
+
+  <import resource="classpath:spring/spring-mybatis.xml"/>
+  <import resource="classpath:spring/spring-aop.xml"/>
+
+</beans>
