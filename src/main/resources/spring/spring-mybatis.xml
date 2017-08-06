@@ -10,7 +10,8 @@
 	http://www.springframework.org/schema/context/spring-context-4.0.xsd
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:property-placeholder location="classpath:jdbc.properties" />
+    <context:property-placeholder location="classpath:jdbc.properties,classpath:redis.properties" />
+<!--    <context:property-placeholder location="classpath:redis.properties" />-->
 
 	<!-- 2.数据库连接池 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -65,6 +66,11 @@
 		<property name="dataSource" ref="dataSource"/>
 		<property name="rollbackOnCommitFailure" value="true"/>
 	</bean>
-    
+
+	<bean id="redisDao" class="com.deyi.dao.redis.RedisDao">
+		<constructor-arg index="0" value="${redis.host}"></constructor-arg>
+		<!--TODO CDATA-->
+		<constructor-arg index="1" value="${redis.port}"></constructor-arg>
+	</bean>
 
 </beans>

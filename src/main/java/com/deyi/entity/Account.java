@@ -2,7 +2,7 @@ package com.deyi.entity;
 
 import java.util.Date;
 
-public class Account {
+public class Account extends  BaseObject{
     private Integer userId;
 
     private String userName;
@@ -126,5 +126,10 @@ public class Account {
         sb.append(", modTime=").append(modTime);
         sb.append("]");
         return sb.toString();
+    }
+
+    @Override
+    public Long getRedisKey() {
+        return this.getUserId().longValue();
     }
 }

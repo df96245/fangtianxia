@@ -11,4 +11,7 @@ public class Constants {
 		int ROLE_CUSTOMER=0;
 		int ROLE_ADMIN=1;
 	}
+
+	//Redis
+	public static final String REDIS_KEY_PREX="redis:";
 }
