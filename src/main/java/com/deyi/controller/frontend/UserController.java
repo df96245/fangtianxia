@@ -32,6 +32,11 @@ public class UserController {
         return  response;
     }
 
+    @RequestMapping(value = "login", method = RequestMethod.GET)
+    public String login(){
+        return  "user/login";
+    }
+
     @RequestMapping(value = "logout",method = RequestMethod.GET)
     @ResponseBody
     public ServerResponse<String> logout(HttpSession session){
