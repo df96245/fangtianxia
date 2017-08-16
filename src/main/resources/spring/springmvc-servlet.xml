@@ -17,8 +17,10 @@
 
 	<mvc:annotation-driven/>
   
+	
   	<bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
 	  <property name="cache" value="true"/>
+	  <!--/WEB-INF/views/-->
 	  <property name="prefix" value=""/>
 	  <property name="suffix" value=".html"/>
 	</bean>
