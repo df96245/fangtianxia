@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
@@ -22,9 +23,9 @@ public class UserController {
     @Autowired
     private IAccountService service;
 
-    @RequestMapping(value = "login", method = RequestMethod.POST)
+    @RequestMapping(value = "login", method = RequestMethod.POST )
     @ResponseBody
-    public ServerResponse<Account> login(String username, String password , HttpSession session){
+    public ServerResponse<Account> login(@RequestParam("username") String username, @RequestParam("password") String password , HttpSession session){
         ServerResponse<Account> response =service.login(username,password);
         if (response.isSuccess()){
             session.setAttribute(Constants.CURRENT_USER,response.getData());
@@ -49,6 +50,11 @@ public class UserController {
     }
 
     @RequestMapping(value="register",method = RequestMethod.GET)
+    public String register(){
+        return  "user/register";
+    }
+
+    @RequestMapping(value="register",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> register(Account account){
         return  service.register(account);
@@ -83,7 +89,5 @@ public class UserController {
     public ServerResponse<String> forgetAnswerCheck(String username , String question , String answer ){
         return  service.checkAnser(username,question,answer);
     }
-
-
 
 }

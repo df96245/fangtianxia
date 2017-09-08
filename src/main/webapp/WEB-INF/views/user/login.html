@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Login page</title>
+    <link href="../../static/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../../static/assets/css/user.css" rel="stylesheet">
+    <script src="../../static/assets/js/jquery.min.js"></script>
+    <script src="../../static/assets/js/user.js"></script>
+    <style>
+        .page-body{
+            width: 40%;
+            margin: 0% 30%;
+        }
+        #login_footer{
+            margin-top:10%;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="page-header">
+        <div class="row">
+            <div class="center-block" style="width:200px;">
+                <a href="#" class="center-block">
+                    <img src="../../static/img/bootstrap-brand-icon.jpg">
+                </a>
+                <h3 class="h3">Sign in to Github</h3>
+            </div>
+        </div>
+    </div>
+    <div class="page-body">
+        <form>
+            <p id="message"></p>
+            <div class="form-group" >
+                <label>Username or email address</label>
+                <input class="form-control" type="text" name="username" id="username">
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input class="form-control" type="password" name="password" id="password">
+            </div>
+        </form>
+        <button class="btn btn-success btn-lg btn-block" type="submit" onclick="login()">Sign in</button>
+
+        <div>
+            <h3 class="h3 text-center"> New to Github?
+                <a href="./register.html">Create an account</a>
+            </h3>
+        </div>
+    </div>
+
+    <ul class="text-center list-inline" id="login_footer">
+        <li><a href="/">Home</a></li>
+        <li><a>Terms</a></li>
+        <li><a>Privacy</a></li>
+        <li><a>Security</a></li>
+        <li><a>Contact Github</a></li>
+    </ul>
+
+</div>
+</body>
+
+</html>
