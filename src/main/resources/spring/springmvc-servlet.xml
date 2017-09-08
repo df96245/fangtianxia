@@ -16,7 +16,7 @@
 	<mvc:default-servlet-handler/>
 
 	<mvc:annotation-driven/>
-
+  
   	<bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
 	  <property name="cache" value="true"/>
 	  <property name="prefix" value=""/>
